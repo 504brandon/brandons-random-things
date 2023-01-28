@@ -1,5 +1,7 @@
 package;
 
+import lime.graphics.Image;
+import lime.app.Application;
 import openfl.display.BitmapData;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
@@ -17,6 +19,8 @@ class FlashLightState extends FlxState {
 		testobjec.makeGraphic(70, 120, FlxColor.WHITE);
 		testobjec.screenCenter();
 		add(testobjec);
+
+		Application.current.window.setIcon(Image.fromFile('assets/images/desktop/flashlight'));
 	}
 
 	override public function update(elapsed:Float) {
