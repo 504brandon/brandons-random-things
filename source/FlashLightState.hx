@@ -14,13 +14,13 @@ class FlashLightState extends FlxState {
 	var flashlightglow:Float = 0.4;
 
 	override public function create() {
+		Application.current.window.setIcon(Image.fromFile('assets/images/desktop/flashlight.png'));
+
 		super.create();
 		testobjec = new FlxSprite(0, 0);
 		testobjec.makeGraphic(70, 120, FlxColor.WHITE);
 		testobjec.screenCenter();
 		add(testobjec);
-
-		Application.current.window.setIcon(Image.fromFile('assets/images/desktop/flashlight'));
 	}
 
 	override public function update(elapsed:Float) {
@@ -28,9 +28,9 @@ class FlashLightState extends FlxState {
 		testobjec.setPosition(FlxG.mouse.x - testobjec.width / 2, FlxG.mouse.y - testobjec.height / 2);
 
 		if (FlxG.mouse.pressed)
-			flashlightglow += 0.1;
+			flashlightglow += 0.01;
 		else
-			flashlightglow -= 0.1;
+			flashlightglow -= 0.01;
 
 		if (flashlightglow > 1)
 			flashlightglow = 1;

@@ -22,7 +22,8 @@ class Desktop extends FlxState {
 				assetLibraryPaths: [
 					// All my homies hate libraries
 					"images" => "assets/images",
-					"sounds" => "assets/sounds"
+					"sounds" => "assets/sounds",
+                    "songs" => "assets/songs"
 				]
 			}
 		});
@@ -64,6 +65,10 @@ class Desktop extends FlxState {
 
 		if (FlxG.mouse.overlaps(cookie) && FlxG.mouse.pressed)
 			FlxG.switchState(new CookieClickerState());
+
+		if (FlxG.keys.justPressed.P)
+			FlxG.switchState(new RhythmGameState());
+
 	}
 
 	public static function coolStringFile(path:String):Array<String>

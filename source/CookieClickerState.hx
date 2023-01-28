@@ -1,6 +1,5 @@
 package;
 
-import flixel.tile.FlxTileblock;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
@@ -14,6 +13,7 @@ class CookieClickerState extends FlxState {
 	var cookie:FlxSprite;
 	var click_text:FlxText;
 	var cookies_clicked:Int;
+	var autoclicker:Bool = false;
 
 	override function create() {
 		super.create();
@@ -52,17 +52,15 @@ class CookieClickerState extends FlxState {
 		super.update(elapsed);
 		click_text.text = "" + cookies_clicked;
 
-		if (FlxG.keys.justPressed.E) {
-			cookies_clicked += 1;
-			FlxG.save.data.cookies_clicked = cookies_clicked;
-			FlxG.save.flush();
-			trace("you have pressed " + cookies_clicked + " times");
-
-			cookie.animation.play('press');
+		if (FlxG.keys.justPressed.TAB){
+			if (!autoclicker)
+				autoclicker = true;
+			else 
+				autoclicker = false;
 		}
 
-		if (FlxG.mouse.overlaps(cookie) && FlxG.mouse.justPressed) {
-			cookies_clicked += 1;
+			if (FlxG.keys.justPressed.E || FlxG.mouse.overlaps(cookie) && FlxG.mouse.justPressed || FlxG.mouse.overlaps(cookie) && autoclicker) {
+			cookies_clicked++;
 			FlxG.save.data.cookies_clicked = cookies_clicked;
 			FlxG.save.flush();
 			trace("you have pressed " + cookies_clicked + " times");
