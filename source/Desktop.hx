@@ -46,11 +46,13 @@ class Desktop extends FlxState {
 		flashlight = new FlxSprite(-10, -10);
 		flashlight.loadGraphic('assets/images/desktop/flashlight.png');
 		flashlight.scale.set(0.5, 0.5);
+        flashlight.updateHitbox();
 		add(flashlight);
 
-		cookie = new FlxSprite(90, -90);
+		cookie = new FlxSprite(140, -40);
 		cookie.loadGraphic('assets/images/desktop/cookie.png');
 		cookie.scale.set(0.4, 0.4);
+        cookie.updateHitbox();
 		add(cookie);
 	}
 
